@@ -257,6 +257,127 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wangzhe1026.github.io/2024/04/21/Convert-PDF-to-Power-Points-Format/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wang Zhe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yenaibangbing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/21/Convert-PDF-to-Power-Points-Format/" class="post-title-link" itemprop="url">Convert PDF to Power Points Format</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-21 01:09:10 / Modified: 01:19:07" itemprop="dateCreated datePublished" datetime="2024-04-21T01:09:10+08:00">2024-04-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>If you do not have a PDF reader but still wish to convert PDF to pptx format( for example, when you are making a presentation in an old classroom ), you can utilize this method. This approach enables PDF to slide conversion through Python, avoiding format issues but sacrificing the original LaTeX’s built-in navigation and other functions.</p>
+<p>If you are not concerned about layout problems and still desire to utilize these functions (such as the navigation bar and hyper-links), there are numerous free online tools available for selection.</p>
+<h2 id="environments"><a href="#environments" class="headerlink" title="environments"></a>environments</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install PyMuPDF</span><br><span class="line">pip install python-pptx</span><br></pre></td></tr></table></figure>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> fitz  <span class="comment"># PyMuPDF</span></span><br><span class="line"><span class="keyword">from</span> pptx <span class="keyword">import</span> Presentation</span><br><span class="line"><span class="keyword">from</span> pptx.util <span class="keyword">import</span> Inches</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pdf_to_ppt</span>(<span class="params">pdf_path, ppt_path</span>):</span><br><span class="line">    doc = fitz.<span class="built_in">open</span>(pdf_path)</span><br><span class="line">    ppt = Presentation()</span><br><span class="line"></span><br><span class="line">	zoom_x = <span class="number">20.0</span></span><br><span class="line">	zoom_y = <span class="number">20.0</span></span><br><span class="line">	mat = fitz.Matrix(zoom_x, zoom_y)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> page <span class="keyword">in</span> doc:</span><br><span class="line"></span><br><span class="line">        pix = page.get_pixmap(matrix=mat, alpha=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        img_path = <span class="string">f&quot;page_<span class="subst">&#123;page.number&#125;</span>.png&quot;</span></span><br><span class="line">        pix.save(img_path)</span><br><span class="line">        </span><br><span class="line">        slide = ppt.slides.add_slide(ppt.slide_layouts[<span class="number">6</span>])</span><br><span class="line">        slide.shapes.add_picture(img_path, Inches(<span class="number">0</span>), Inches(<span class="number">0</span>), width=ppt.slide_width)</span><br><span class="line">    ppt.save(ppt_path)</span><br><span class="line"></span><br><span class="line">    directory = os.getcwd()</span><br><span class="line"></span><br><span class="line">    pattern = re.<span class="built_in">compile</span>(<span class="string">r&quot;^page_\d+\.png$&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(directory):</span><br><span class="line">        <span class="keyword">if</span> pattern.<span class="keyword">match</span>(filename):</span><br><span class="line">            file_path = os.path.join(directory, filename)</span><br><span class="line">            os.remove(file_path)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Deleted <span class="subst">&#123;file_path&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pdf_to_ppt(<span class="string">&quot;slide.pdf&quot;</span>, <span class="string">&quot;output.pptx&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p>These 2 demos, input.pdf and output.pdf, can be found in <a target="_blank" rel="noopener" href="https://github.com/WangZhe1026/pdf2slide">my repository</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wangzhe1026.github.io/2024/04/21/It-Never-Rains-In-Singapore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wang Zhe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yenaibangbing's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/21/It-Never-Rains-In-Singapore/" class="post-title-link" itemprop="url">It Never Rains In Singapore</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-21 01:04:32 / Modified: 01:06:34" itemprop="dateCreated datePublished" datetime="2024-04-21T01:04:32+08:00">2024-04-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wangzhe1026.github.io/2024/04/20/test-next-theme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -443,12 +564,12 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -481,8 +602,6 @@ mjx-container[display="true"] + br {
   </span>
   <span class="author" itemprop="copyrightHolder">Wang Zhe</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
-  </div>
 
         
 
