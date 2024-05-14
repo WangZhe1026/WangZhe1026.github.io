@@ -20,22 +20,25 @@
     var CONFIG = {"hostname":"wangzhe1026.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="&#x2F;&#x2F;todo">
+  <meta name="description" content="本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势 related works我们提出了一种像素合成模型,它学习了一个有条件的2D空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如NAIP或Sentinel-2)在不同时间(如2016年或2018年)捕获。 problem set输入:我们给定了同一位置的高分辨率(HR)和低分辨率(LR)两个时">
 <meta property="og:type" content="article">
-<meta property="og:title" content="paper reading：Deep Learning for Image Super-resolution： A Survey">
-<meta property="og:url" content="http://wangzhe1026.github.io/2024/05/04/paper-reading%EF%BC%9ADeep-Learning-for-Image-Super-resolution-A-Survey/index.html">
+<meta property="og:title" content="paper reading： Spatial-Temporal Super-Resolution of Satellite Imagery via Conditional Pixel Synthesis">
+<meta property="og:url" content="http://wangzhe1026.github.io/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/index.html">
 <meta property="og:site_name" content="yenaibangbing&#39;s blog">
-<meta property="og:description" content="&#x2F;&#x2F;todo">
+<meta property="og:description" content="本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势 related works我们提出了一种像素合成模型,它学习了一个有条件的2D空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如NAIP或Sentinel-2)在不同时间(如2016年或2018年)捕获。 problem set输入:我们给定了同一位置的高分辨率(HR)和低分辨率(LR)两个时">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-03T19:58:05.000Z">
-<meta property="article:modified_time" content="2024-05-14T16:38:51.037Z">
+<meta property="og:image" content="http://wangzhe1026.github.io/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/image-20240505213411660.png">
+<meta property="article:published_time" content="2024-05-05T12:20:19.000Z">
+<meta property="article:modified_time" content="2024-05-14T16:40:18.362Z">
 <meta property="article:author" content="Wang Zhe">
 <meta property="article:tag" content="paper reading">
-<meta property="article:tag" content="super resoultion">
-<meta property="article:tag" content="review">
+<meta property="article:tag" content="super resolution">
+<meta property="article:tag" content="object counting">
+<meta property="article:tag" content="remote sensing">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wangzhe1026.github.io/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/image-20240505213411660.png">
 
-<link rel="canonical" href="http://wangzhe1026.github.io/2024/05/04/paper-reading%EF%BC%9ADeep-Learning-for-Image-Super-resolution-A-Survey/">
+<link rel="canonical" href="http://wangzhe1026.github.io/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/">
 
 
 <script id="page-configurations">
@@ -48,7 +51,7 @@
   };
 </script>
 
-  <title>paper reading：Deep Learning for Image Super-resolution： A Survey | yenaibangbing's blog</title>
+  <title>paper reading： Spatial-Temporal Super-Resolution of Satellite Imagery via Conditional Pixel Synthesis | yenaibangbing's blog</title>
   
 
 
@@ -163,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wangzhe1026.github.io/2024/05/04/paper-reading%EF%BC%9ADeep-Learning-for-Image-Super-resolution-A-Survey/">
+    <link itemprop="mainEntityOfPage" href="http://wangzhe1026.github.io/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -176,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          paper reading：Deep Learning for Image Super-resolution： A Survey
+          paper reading： Spatial-Temporal Super-Resolution of Satellite Imagery via Conditional Pixel Synthesis
         </h1>
 
         <div class="post-meta">
@@ -186,15 +189,24 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2024-05-04 03:58:05" itemprop="dateCreated datePublished" datetime="2024-05-04T03:58:05+08:00">2024-05-04</time>
+              <time title="Created: 2024-05-05 20:20:19" itemprop="dateCreated datePublished" datetime="2024-05-05T20:20:19+08:00">2024-05-05</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-15 00:38:51" itemprop="dateModified" datetime="2024-05-15T00:38:51+08:00">2024-05-15</time>
+                <time title="Modified: 2024-05-15 00:40:18" itemprop="dateModified" datetime="2024-05-15T00:40:18+08:00">2024-05-15</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper-reading/" itemprop="url" rel="index"><span itemprop="name">paper reading</span></a>
+                </span>
+            </span>
 
           
 
@@ -207,7 +219,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>//todo</p>
+        <p>本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势</p>
+<h2 id="related-works"><a href="#related-works" class="headerlink" title="related works"></a>related works</h2><p>我们提出了一种像素合成模型,它学习了一个有条件的2D空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如NAIP或Sentinel-2)在不同时间(如2016年或2018年)捕获。</p>
+<h2 id="problem-set"><a href="#problem-set" class="headerlink" title="problem set"></a>problem set</h2><p><strong>输入:我们给定了同一位置的高分辨率(HR)和低分辨率(LR)两个时间序列。直观地说,我们希望利用HR图像中丰富的信息和LR图像的高时间频率,以获得两者的最佳效果</strong></p>
+<p><strong>输出：某时刻t的HR</strong></p>
+<p><img src="/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/image-20240505213411660.png" alt="image-20240505213411660"></p>
+<h2 id="method"><a href="#method" class="headerlink" title="method"></a>method</h2><ol>
+<li><p>图像特征映射器(Image Feature Mapper)</p>
+<p>首先对低分辨率图像进行最近邻重采样,得到拼接后的输入图像 I_cat(一层HR，一层LR，2C x H x W)</p>
+<p>使用邻域编码器 F_E 和全局编码器 F_A 提取图像特征,得到特征图 I_fea（C_fea x H x W）</p>
+</li>
+<li><p>位置编码器(Positional Encoder)</p>
+<p>使用傅里叶特征和空间坐标嵌入,得到位置编码 E(x,y,t)</p>
+</li>
+<li><p>像素合成器(Pixel Synthesizer)</p>
+<p>根据 I_fea、E(x,y,t) 和随机向量 z,独立地合成每个像素值</p>
+<p>具体来说,G_p 包含以下几个关键组件:</p>
+<ol>
+<li>映射函数 g_z:<ul>
+<li>它将位置编码 E(x,y,t) 映射到一个 C_fea 维的向量。</li>
+<li>这个映射函数帮助 G_p 学习如何利用位置信息来生成对应位置的像素值。</li>
+</ul>
+</li>
+<li>样式注入模块:<ul>
+<li>首先使用一个多层感知机 M 将噪声向量 z 映射到一个样式向量 w。</li>
+<li>然后在 G_p 的多个全连接层中注入这个样式向量 w,以保持生成像素之间的样式一致性。</li>
+</ul>
+</li>
+<li>逐像素生成:<ul>
+<li>对于每个坐标(x,y,t),G_p 根据 I_fea(x,y)、g_z(E(x,y,t)) 和 w 独立地生成对应的像素值。</li>
+<li>这种逐像素、条件独立的生成方式使得 G_p 可以并行高效地生成整张高分辨率图像。</li>
+</ul>
+</li>
+</ol>
+<p>使用多层感知机和样式注入的方式生成最终的高分辨率图像</p>
+</li>
+<li><p>对抗训练</p>
+<p>引入判别器 D 进行对抗训练,以提高生成图像的质量</p>
+</li>
+</ol>
 
     </div>
 
@@ -218,8 +268,9 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/paper-reading/" rel="tag"># paper reading</a>
-              <a href="/tags/super-resoultion/" rel="tag"># super resoultion</a>
-              <a href="/tags/review/" rel="tag"># review</a>
+              <a href="/tags/super-resolution/" rel="tag"># super resolution</a>
+              <a href="/tags/object-counting/" rel="tag"># object counting</a>
+              <a href="/tags/remote-sensing/" rel="tag"># remote sensing</a>
           </div>
 
         
@@ -228,13 +279,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/05/04/Coding-in-AutoDL/" rel="prev" title="Coding in AutoDL">
-      <i class="fa fa-chevron-left"></i> Coding in AutoDL
+    <a href="/2024/05/04/paper-reading%EF%BC%9ADeep-Learning-for-Image-Super-resolution-A-Survey/" rel="prev" title="paper reading：Deep Learning for Image Super-resolution： A Survey">
+      <i class="fa fa-chevron-left"></i> paper reading：Deep Learning for Image Super-resolution： A Survey
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/" rel="next" title="paper reading： Spatial-Temporal Super-Resolution of Satellite Imagery via Conditional Pixel Synthesis">
-      paper reading： Spatial-Temporal Super-Resolution of Satellite Imagery via Conditional Pixel Synthesis <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -293,6 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#related-works"><span class="nav-number">1.</span> <span class="nav-text">related works</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-set"><span class="nav-number">2.</span> <span class="nav-text">problem set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#method"><span class="nav-number">3.</span> <span class="nav-text">method</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
