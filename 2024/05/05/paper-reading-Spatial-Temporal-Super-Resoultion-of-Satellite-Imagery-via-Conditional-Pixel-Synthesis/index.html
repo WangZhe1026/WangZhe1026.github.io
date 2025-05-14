@@ -20,16 +20,16 @@
     var CONFIG = {"hostname":"wangzhe1026.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势 related works我们提出了一种像素合成模型,它学习了一个有条件的2D空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如NAIP或Sentinel-2)在不同时间(如2016年或2018年)捕获。 problem set输入:我们给定了同一位置的高分辨率(HR)和低分辨率(LR)两个时">
+  <meta name="description" content="本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势 related works我们提出了一种像素合成模型,它学习了一个有条件的 2D 空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如 NAIP 或 Sentinel-2)在不同时间(如 2016 年或 2018 年)捕获。 problem set输入:我们给定了同一位置的高分辨率(HR)和低">
 <meta property="og:type" content="article">
 <meta property="og:title" content="paper reading： Spatial-Temporal Super-Resolution of Satellite Imagery via Conditional Pixel Synthesis">
 <meta property="og:url" content="http://wangzhe1026.github.io/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/index.html">
 <meta property="og:site_name" content="yenaibangbing&#39;s blog">
-<meta property="og:description" content="本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势 related works我们提出了一种像素合成模型,它学习了一个有条件的2D空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如NAIP或Sentinel-2)在不同时间(如2016年或2018年)捕获。 problem set输入:我们给定了同一位置的高分辨率(HR)和低分辨率(LR)两个时">
+<meta property="og:description" content="本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势 related works我们提出了一种像素合成模型,它学习了一个有条件的 2D 空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如 NAIP 或 Sentinel-2)在不同时间(如 2016 年或 2018 年)捕获。 problem set输入:我们给定了同一位置的高分辨率(HR)和低">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://wangzhe1026.github.io/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/image-20240505213411660.png">
 <meta property="article:published_time" content="2024-05-05T12:20:19.000Z">
-<meta property="article:modified_time" content="2024-05-14T16:40:18.362Z">
+<meta property="article:modified_time" content="2025-05-14T05:05:16.451Z">
 <meta property="article:author" content="Wang Zhe">
 <meta property="article:tag" content="paper reading">
 <meta property="article:tag" content="super resolution">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-15 00:40:18" itemprop="dateModified" datetime="2024-05-15T00:40:18+08:00">2024-05-15</time>
+                <time title="Modified: 2025-05-14 13:05:16" itemprop="dateModified" datetime="2025-05-14T13:05:16+08:00">2025-05-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,14 +219,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势</p>
-<h2 id="related-works"><a href="#related-works" class="headerlink" title="related works"></a>related works</h2><p>我们提出了一种像素合成模型,它学习了一个有条件的2D空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如NAIP或Sentinel-2)在不同时间(如2016年或2018年)捕获。</p>
-<h2 id="problem-set"><a href="#problem-set" class="headerlink" title="problem set"></a>problem set</h2><p><strong>输入:我们给定了同一位置的高分辨率(HR)和低分辨率(LR)两个时间序列。直观地说,我们希望利用HR图像中丰富的信息和LR图像的高时间频率,以获得两者的最佳效果</strong></p>
-<p><strong>输出：某时刻t的HR</strong></p>
+        <span id="more"></span>
+<p>本文提出了一种新的条件像素合成模型，并在物体计数这个下游任务中有关键优势</p>
+<h2 id="related-works"><a href="#related-works" class="headerlink" title="related works"></a>related works</h2><p>我们提出了一种像素合成模型,它学习了一个有条件的 2D 空间坐标网格以及连续的时间维度,这对遥感应用很合适,因为同一位置可以由不同设备(如 NAIP 或 Sentinel-2)在不同时间(如 2016 年或 2018 年)捕获。</p>
+<h2 id="problem-set"><a href="#problem-set" class="headerlink" title="problem set"></a>problem set</h2><p><strong>输入:我们给定了同一位置的高分辨率(HR)和低分辨率(LR)两个时间序列。直观地说,我们希望利用 HR 图像中丰富的信息和 LR 图像的高时间频率,以获得两者的最佳效果</strong></p>
+<p><strong>输出：某时刻 t 的 HR</strong></p>
 <p><img src="/2024/05/05/paper-reading-Spatial-Temporal-Super-Resoultion-of-Satellite-Imagery-via-Conditional-Pixel-Synthesis/image-20240505213411660.png" alt="image-20240505213411660"></p>
 <h2 id="method"><a href="#method" class="headerlink" title="method"></a>method</h2><ol>
 <li><p>图像特征映射器(Image Feature Mapper)</p>
-<p>首先对低分辨率图像进行最近邻重采样,得到拼接后的输入图像 I_cat(一层HR，一层LR，2C x H x W)</p>
+<p>首先对低分辨率图像进行最近邻重采样,得到拼接后的输入图像 I_cat(一层 HR，一层 LR，2C x H x W)</p>
 <p>使用邻域编码器 F_E 和全局编码器 F_A 提取图像特征,得到特征图 I_fea（C_fea x H x W）</p>
 </li>
 <li><p>位置编码器(Positional Encoder)</p>

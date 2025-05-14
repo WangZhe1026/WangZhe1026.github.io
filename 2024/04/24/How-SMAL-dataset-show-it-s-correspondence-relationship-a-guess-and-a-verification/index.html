@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://wangzhe1026.github.io/2024/04/24/How-SMAL-dataset-show-it-s-correspondence-relationship-a-guess-and-a-verification/image-20240424013605402.png">
 <meta property="og:image" content="http://wangzhe1026.github.io/2024/04/24/How-SMAL-dataset-show-it-s-correspondence-relationship-a-guess-and-a-verification/image-20240424013557259.png">
 <meta property="article:published_time" content="2024-04-23T16:52:11.000Z">
-<meta property="article:modified_time" content="2024-05-14T16:35:17.787Z">
+<meta property="article:modified_time" content="2025-05-14T05:05:01.325Z">
 <meta property="article:author" content="Wang Zhe">
 <meta property="article:tag" content="dataset">
 <meta property="article:tag" content="open3d">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-15 00:35:17" itemprop="dateModified" datetime="2024-05-15T00:35:17+08:00">2024-05-15</time>
+                <time title="Modified: 2025-05-14 13:05:01" itemprop="dateModified" datetime="2025-05-14T13:05:01+08:00">2025-05-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,17 +226,17 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># nv = 5208</span><br></pre></td></tr></table></figure>
 <p>Then next $nv$ lines are information about the coordinates of these vertices, such as:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">v 0.406752 0.144386 0.513073</span><br><span class="line">v 0.332418 0.134887 0.600010</span><br><span class="line">v 0.626470 0.261179 0.671501</span><br><span class="line">v 0.621570 0.245227 0.687252</span><br><span class="line">v 0.540259 0.232813 0.785400</span><br><span class="line">v 0.269828 0.402208 0.421639</span><br><span class="line">v 0.239913 0.400150 0.444876</span><br><span class="line">v 0.215629 0.403053 0.444389</span><br></pre></td></tr></table></figure>
-<p>Then next $2 <em> nv $ lines stores the information about  $2 </em> nv $,</p>
-<p>The next $2 * nv $ lines contain information about the triangles, where the$ (1 + nv + i)th$  line stores the three points that form the $ith$ triangle.</p>
+<p>Then next $2 <em> nv $ lines stores the information about $2 </em> nv $,</p>
+<p>The next $2 * nv $ lines contain information about the triangles, where the$ (1 + nv + i)th$ line stores the three points that form the $ith$ triangle.</p>
 <p>For instance,</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f 4914 4563 4913</span><br><span class="line">f 1523 574 1524</span><br><span class="line">f 3118 1523 1524</span><br><span class="line">f 4364 1525 4326</span><br><span class="line">f 1529 1526 4363</span><br><span class="line">f 5119 1529 4363</span><br><span class="line">f 4326 1525 1527</span><br></pre></td></tr></table></figure>
-<h3 id="correspondences"><a href="#correspondences" class="headerlink" title="correspondences"></a><strong>correspondences</strong></h3><p>In this folder, there are also several $<em>.vts $ files, which names are same as the files in <em>*shapes</em></em>. Each file has n lines of an integer, just like</p>
+<h3 id="correspondences"><a href="#correspondences" class="headerlink" title="correspondences"></a><strong>correspondences</strong></h3><p>In this folder, there are also several $*.vts $ files, which names are same as the files in <strong>shapes</strong>. Each file has n lines of an integer, just like</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">2425</span><br><span class="line">119</span><br><span class="line">908</span><br><span class="line">3407</span><br><span class="line">2366</span><br><span class="line">2647</span><br><span class="line">3737</span><br><span class="line">1829</span><br><span class="line">2181</span><br><span class="line">2474</span><br><span class="line">5035</span><br><span class="line">3237</span><br><span class="line">2673</span><br><span class="line">4949</span><br><span class="line">2662</span><br><span class="line">2593</span><br><span class="line">211</span><br><span class="line">2902</span><br><span class="line">2209</span><br><span class="line">393</span><br></pre></td></tr></table></figure>
 <h2 id="a-simple-guess"><a href="#a-simple-guess" class="headerlink" title="a simple guess"></a>a simple guess</h2><p>If the $value-1$ of the $i-th$ -1 of each shape have a one-to-one correspondence. (A)</p>
 <p>To illustrate it, think if we have 2 shapes: dog_01 and dog_02.</p>
 <p>Then, the 1st line of dog_01.vts is 2425, the 1st line of dog_02.vts is 2363.</p>
 <p>If (A) is correct, the the 0 th group of correspondences must be 2424 and 2362(because the index starts from 0, so minus 1)</p>
-<h2 id="a-simple-way-to-prove"><a href="#a-simple-way-to-prove" class="headerlink" title="a simple way to prove"></a>a simple way to prove</h2><p>Just draw these two shapes and connect these two points. </p>
+<h2 id="a-simple-way-to-prove"><a href="#a-simple-way-to-prove" class="headerlink" title="a simple way to prove"></a>a simple way to prove</h2><p>Just draw these two shapes and connect these two points.</p>
 <p>If (A) is correct, you can find that these two points should be on the same part of the animal.</p>
 <h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><p>Here I chose open3d as my visualization tool.</p>
 <p>Don’t forget to color the lines or meshes of the shapes, or you can just get a transparent canvas.</p>
